@@ -1,0 +1,96 @@
+/*
+(a) Is there an account in the Royal Bank of a man from Richmond Hill ?
+(b) Is there a Canadian who has more than one account in CIBC?
+(c) What are the banks in Toronto?
+(d) What is a balance of an account in the Bank of Montreal of a person from Scarborough?
+(e) What bank keeps accounts of two distinct local persons ? 
+(Note: for purposes of this assignment, a person is local if it is a person who lives in Canada, 
+and foreign otherwise.)
+(f) What are the cities in the USA?
+(These queries should not use English noun phrases!) You can use more queries, 
+but at least all 6 queries mentioned above. It is up to you to formulate a range 
+of queries that demonstrates that your program works properly. Keep your queries 
+and answers computed by Prolog in the file nlu.txt
+Once you have this working, you are ready to consider English noun phrases 
+and the accounts they refer to. Here are some examples of the kinds of queries 
+your system should be able to answer:
+
+%Number is account number
+%Name is account holder name
+%Bank is the location of this bank
+%Balance is the current balance on the account
+/*
+account(Number, Name, Bank, Balance).
+created(Number,Name, Bank, Month, Year).
+lives(P, City). P = person name 
+location(X,C). X = city C = country
+*/
+a)
+account(Number,Name,royal_bank_of_canada,Balance), lives(Name,richmondHill).
+
+b)account(Number,Name,cibc,Balance), account(Numbe1,Name,cibc,Balance).
+
+
+
+a.
+?- account(Account, Name, rbc, Balance), lives(Name, richmondHill).
+Account = 50
+Name = philip
+Balance = 1490
+Yes (0.00s cpu)
+
+b.
+?- account(Account, Name, cibc, Balance), account(Account1, Name, cibc, Balance1), lives(Name, City), location(City, canada), Account \= Account1.
+Account = 8
+Name = ann
+Balance = 1000
+Account1 = 18
+Balance1 = 5300
+City = markham
+Yes (0.00s cpu, solution 1, maybe more)
+
+c.
+?- location(Bank, toronto).
+Bank = rbc
+Yes (0.00s cpu, solution 1, maybe more)
+Bank = td
+Yes (0.01s cpu, solution 2, maybe more)
+Bank = bank_of_montreal
+Yes (0.02s cpu, solution 3)
+
+d.
+?- account(Account, Name, bank_of_montreal, Balance), lives(Name, scarborough).
+Account = 45
+Name = sam
+Balance = 5000
+Yes (0.00s cpu, solution 1, maybe more)
+
+e.
+?- account(Account, Name, Bank, Balance), account(Account1, Name1, Bank, Balance1), location(Bank, City), location(City, canada), Name \= Name1.
+Account = 12
+Name = ann
+Bank = metro_credit_union
+Balance = 2505
+Account1 = 16
+Name1 = lisa
+Balance1 = 1010
+City = markham
+Yes (0.00s cpu, solution 1, maybe more)
+Account = 13
+Name = robert
+Bank = rbc
+Balance = 50000
+Account1 = 9
+Name1 = ben
+Balance1 = 50
+City = toronto
+Yes (0.07s cpu, solution 2, maybe more)
+
+f.
+?- location(Bank, City), location(City, usa).
+Bank = metro_credit_union
+City = sanFrancisco
+Yes (0.00s cpu, solution 1, maybe more)
+
+
+

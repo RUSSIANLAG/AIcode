@@ -1,0 +1,183 @@
+?- created(ann, metro_credit_union, Month, Year).
+Month = 6
+Year = 2019
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.02s cpu)
+?- hasAccount(Person, bank_of_montreal, _94), hasAccount(Person, national_bank_of_canada, _107).
+Person = marc
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+?- hasAccount(Person, toronto_dominion, _93), not lives(Person, toronto).
+Person = ann
+Yes (0.00s cpu, solution 1, maybe more)
+Person = michael
+Yes (0.00s cpu, solution 2, maybe more)
+Person = claire
+Yes (0.01s cpu, solution 3, maybe more)
+Person = sue
+Yes (0.01s cpu, solution 4, maybe more)
+Person = sam
+Yes (0.03s cpu, solution 5)
+?- created(Person, royal_bank_of_canada, 8, 2019).
+Person = beth
+Yes (0.00s cpu, solution 1, maybe more)
+Person = james
+Yes (0.00s cpu, solution 2, maybe more)
+Person = tom
+Yes (0.00s cpu, solution 3, maybe more)
+No (0.00s cpu)
+?- created(Person, Bank1, 6, 2019), created(Person, Bank2, 6, 2019), not Bank1 = Bank2, hasAccount(Person, Bank1, Amount1), hasAccount(Person, Bank2, Amount2), Amount1 < 1500, Amount2 < 1500.
+Person = ann
+Bank1 = metro_credit_union
+Bank2 = cibc
+Amount1 = 1000
+Amount2 = 1000
+Yes (0.00s cpu, solution 1, maybe more)
+Person = ann
+Bank1 = cibc
+Bank2 = metro_credit_union
+Amount1 = 1000
+Amount2 = 1000
+Yes (0.02s cpu, solution 2, maybe more)
+No (0.02s cpu)
+?- hasAccount(Person1, Bank, Amount1), hasAccount(Person2, Bank, Amount2), hasAccount(Person3, Bank, Amount3), not Person1 = Person2, not Person2 = Person3, not Person3 = Person1, Amount1 > 1000, Amount2 > 1000, Amount3 > 1000, lives(Person1, new_york), lives(Person2, new_york), lives(Person3, new_york).
+Person1 = claire
+Bank = toronto_dominion
+Amount1 = 1500
+Person2 = sue
+Amount2 = 3000
+Person3 = sam
+Amount3 = 5000
+Yes (0.00s cpu, solution 1, maybe more)
+Person1 = claire
+Bank = toronto_dominion
+Amount1 = 1500
+Person2 = sam
+Amount2 = 5000
+Person3 = sue
+Amount3 = 3000
+Yes (0.03s cpu, solution 2, maybe more)
+Person1 = sue
+Bank = toronto_dominion
+Amount1 = 3000
+Person2 = claire
+Amount2 = 1500
+Person3 = sam
+Amount3 = 5000
+Yes (0.03s cpu, solution 3, maybe more)
+Person1 = sue
+Bank = toronto_dominion
+Amount1 = 3000
+Person2 = sam
+Amount2 = 5000
+Person3 = claire
+Amount3 = 1500
+Yes (0.05s cpu, solution 4, maybe more)
+Person1 = sam
+Bank = toronto_dominion
+Amount1 = 5000
+Person2 = claire
+Amount2 = 1500
+Person3 = sue
+Amount3 = 3000
+Yes (0.05s cpu, solution 5, maybe more)
+Person1 = sam
+Bank = toronto_dominion
+Amount1 = 5000
+Person2 = sue
+Amount2 = 3000
+Person3 = claire
+Amount3 = 1500
+Yes (0.06s cpu, solution 6, maybe more)
+No (0.06s cpu)
+?- created(Person, Bank1, _107, Year), created(Person, Bank2, _128, Year), not Bank1 = Bank2, not lives(Person, toronto).
+Person = ann
+Bank1 = metro_credit_union
+Year = 2019
+Bank2 = cibc
+Yes (0.00s cpu, solution 1, maybe more)
+Person = ann
+Bank1 = cibc
+Year = 2019
+Bank2 = metro_credit_union
+Yes (0.03s cpu, solution 2, maybe more)
+Person = jane
+Bank1 = bank_of_montreal
+Year = 2016
+Bank2 = royal_bank_of_canada
+Yes (0.03s cpu, solution 3, maybe more)
+Person = jane
+Bank1 = royal_bank_of_canada
+Year = 2016
+Bank2 = bank_of_montreal
+Yes (0.03s cpu, solution 4, maybe more)
+No (0.05s cpu)
+?- hasAccount(Person, Bank1, Amount), hasAccount(Person, Bank2, Amount), not Bank1 = Bank2, created(Person, Bank1, _155, Year1), created(Person, Bank2, _176, Year2), not Year1 = Year2.
+Person = ann
+Bank1 = metro_credit_union
+Amount = 1000
+Bank2 = toronto_dominion
+Year1 = 2019
+Year2 = 2009
+Yes (0.00s cpu, solution 1, maybe more)
+Person = ann
+Bank1 = cibc
+Amount = 1000
+Bank2 = toronto_dominion
+Year1 = 2019
+Year2 = 2009
+Yes (0.02s cpu, solution 2, maybe more)
+Person = ann
+Bank1 = toronto_dominion
+Amount = 1000
+Bank2 = metro_credit_union
+Year1 = 2009
+Year2 = 2019
+Yes (0.03s cpu, solution 3, maybe more)
+Person = ann
+Bank1 = toronto_dominion
+Amount = 1000
+Bank2 = cibc
+Year1 = 2009
+Year2 = 2019
+Yes (0.03s cpu, solution 4, maybe more)
+Person = john
+Bank1 = royal_bank_of_canada
+Amount = 1490
+Bank2 = scotia_bank
+Year1 = 2008
+Year2 = 2010
+Yes (0.03s cpu, solution 5, maybe more)
+Person = john
+Bank1 = scotia_bank
+Amount = 1490
+Bank2 = royal_bank_of_canada
+Year1 = 2010
+Year2 = 2008
+Yes (0.05s cpu, solution 6, maybe more)
+No (0.05s cpu)
+?- created(Oldest, cibc, Month1, Year1), lives(Oldest, toronto), not ((created(Person, cibc, Month2, Year2), lives(Person, toronto)), not Oldest = Person, Year1 >= Year2, Month1 > Month2).
+Oldest = ben
+Month1 = 1
+Year1 = 2000
+Person = Person
+Month2 = Month2
+Year2 = Year2
+Yes (0.00s cpu, solution 1, maybe more)
+No (0.00s cpu)
+?- hasAccount(Person1, _109, Amount1), not lives(Person1, toronto), not (hasAccount(Person2, _146, Amount2), not lives(Person2, toronto), not Person1 = Person2, (hasAccount(Person3, _189, Amount3), not lives(Person3, toronto), not Person2 = Person3), Amount1 < Amount2, Amount1 < Amount3, Amount2 < Amount3).
+Person1 = sam
+Amount1 = 5000
+Person2 = Person2
+Amount2 = Amount2
+Person3 = Person3
+Amount3 = Amount3
+Yes (0.00s cpu, solution 1, maybe more)
+Person1 = michelle
+Amount1 = 10000
+Person2 = Person2
+Amount2 = Amount2
+Person3 = Person3
+Amount3 = Amount3
+Yes (0.02s cpu, solution 2, maybe more)
+No (0.02s cpu)
